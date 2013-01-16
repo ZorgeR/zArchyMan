@@ -6,6 +6,7 @@
 
 mypath=${0%/*}
 
+<<<<<<< HEAD
 totar()
 {
 	showNotify "zArchyMan" "start operation" 1 1
@@ -45,6 +46,8 @@ to7zlzma()
 	break
 }
 
+=======
+>>>>>>> 3f10816567462c4b7f946bcddcf5e8d202e56df5
 export IFILENAME="$2"
 export EXIT="$2"
 export IDIRNAME=`busybox dirname "$2"`
@@ -71,12 +74,17 @@ then
 				then
 					export IDIRNAME=`pwd`
 					export IFILENAME="$CD"
+<<<<<<< HEAD
 					showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz" " > 7z"
+=======
+					showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz"
+>>>>>>> 3f10816567462c4b7f946bcddcf5e8d202e56df5
 					ret=$?
 					[ $ret -eq 0 ] && exit
 
 					case $ret in
 					1)					
+<<<<<<< HEAD
 						totar
 					;;
 					2)
@@ -84,6 +92,29 @@ then
 					;;
 					3)
 						to7zlzma
+=======
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showQ "Success" "$IFILENAME.tar сохранен на карте памяти!" 2
+						break
+					;;
+					2)
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						rm "/mmc/mmca1/$archypath.gz"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showNotify "zArchyMan" "start compress to tar.gz. Wait please." 1 2
+						gzip "/mmc/mmca1/$archypath" "$archypath"
+						showQ "Success" "$IFILENAME.tar.gz сохранен на карте памяти!" 2
+						break
+>>>>>>> 3f10816567462c4b7f946bcddcf5e8d202e56df5
 					;;
 					*)
 					;;
@@ -91,12 +122,17 @@ then
 				else
 					export IDIRNAME=`pwd`
 					export IFILENAME="$CD"
+<<<<<<< HEAD
 					showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz" " > 7z"
+=======
+					showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz"
+>>>>>>> 3f10816567462c4b7f946bcddcf5e8d202e56df5
 					ret=$?
 					[ $ret -eq 0 ] && exit
 
 					case $ret in
 					1)					
+<<<<<<< HEAD
 						totar
 					;;
 					2)
@@ -104,6 +140,29 @@ then
 					;;
 					3)
 						to7zlzma
+=======
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showQ "Success" "$IFILENAME.tar сохранен на карте памяти!" 2
+						break
+					;;
+					2)
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						rm "/mmc/mmca1/$archypath.gz"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showNotify "zArchyMan" "start compress to tar.gz. Wait please." 1 2
+						gzip "/mmc/mmca1/$archypath" "$archypath"
+						showQ "Success" "$IFILENAME.tar.gz сохранен на карте памяти!" 2
+						break
+>>>>>>> 3f10816567462c4b7f946bcddcf5e8d202e56df5
 					;;
 					*)
 					;;
@@ -124,12 +183,17 @@ else
 	else
 		export IDIRNAME=`pwd`
 		export IFILENAME="$CD"
+<<<<<<< HEAD
 		showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz" " > 7z"
+=======
+		showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz"
+>>>>>>> 3f10816567462c4b7f946bcddcf5e8d202e56df5
 			ret=$?
 			[ $ret -eq 0 ] && exit
 
 			case $ret in
 			1)					
+<<<<<<< HEAD
 				totar
 			;;
 			2)
@@ -140,6 +204,32 @@ else
 			;;
 			*)
 			;;
+=======
+					showNotify "zArchyMan" "start operation" 1 1
+					archypath="$IFILENAME.tar"
+					cd "$IDIRNAME"
+					rm "/mmc/mmca1/$archypath"
+					showNotify "zArchyMan" "start compress to tar" 1 1
+					busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+					showQ "Success" "$IFILENAME.tar сохранен на карте памяти!" 2
+					break
+				;;
+			2)
+					showNotify "zArchyMan" "start operation" 1 1
+					archypath="$IFILENAME.tar"
+					cd "$IDIRNAME"
+					rm "/mmc/mmca1/$archypath"
+					rm "/mmc/mmca1/$archypath.gz"
+					showNotify "zArchyMan" "start compress to tar" 1 1
+					busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+					showNotify "zArchyMan" "start compress to tar.gz. Wait please." 1 2
+					gzip "/mmc/mmca1/$archypath" "$archypath"
+					showQ "Success" "$IFILENAME.tar.gz сохранен на карте памяти!" 2
+					break
+				;;
+			*)
+				;;
+>>>>>>> 3f10816567462c4b7f946bcddcf5e8d202e56df5
 			esac
 	fi
 fi
