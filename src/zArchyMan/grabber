@@ -1,0 +1,152 @@
+#!/bin/sh
+
+# zArchyMan by Zorge.R
+# motofan.ru - 2010
+# don't modify code.
+
+mypath=${0%/*}
+
+export IFILENAME="$2"
+export EXIT="$2"
+export IDIRNAME=`busybox dirname "$2"`
+export DIRNAME=`busybox dirname "$0"`
+
+LS=`ls -a | sed -e "/^\.$/d" | sed -e "/^\..$/d" | sed s/\ /~/g`
+
+showRadio "Select file" "`pwd`" "> ../../" "> Select folder" $LS
+RADIORES=$?
+if [ $RADIORES -eq 0 ]
+then
+	exit
+elif [ $RADIORES -eq 2 ]
+then
+	showRadio "Select folder" "`pwd`" $LS
+	RADIORES2=$?
+	if [ $RADIORES2 -eq -1 ]
+		then
+			exit
+		else
+			let n=$RADIORES2
+			CD=`ls -a | sed -e "/^\.$/d" | sed -e "/^\..$/d" | sed -n $n\p`
+			if [ -d "$CD" ]
+				then
+					export IDIRNAME=`pwd`
+					export IFILENAME="$CD"
+					showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz"
+					ret=$?
+					[ $ret -eq 0 ] && exit
+
+					case $ret in
+					1)					
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showQ "Success" "$IFILENAME.tar сохранен на карте памяти!" 2
+						break
+					;;
+					2)
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						rm "/mmc/mmca1/$archypath.gz"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showNotify "zArchyMan" "start compress to tar.gz. Wait please." 1 2
+						gzip "/mmc/mmca1/$archypath" "$archypath"
+						showQ "Success" "$IFILENAME.tar.gz сохранен на карте памяти!" 2
+						break
+					;;
+					*)
+					;;
+					esac
+				else
+					export IDIRNAME=`pwd`
+					export IFILENAME="$CD"
+					showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz"
+					ret=$?
+					[ $ret -eq 0 ] && exit
+
+					case $ret in
+					1)					
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showQ "Success" "$IFILENAME.tar сохранен на карте памяти!" 2
+						break
+					;;
+					2)
+						showNotify "zArchyMan" "start operation" 1 1
+						archypath="$IFILENAME.tar"
+						cd "$IDIRNAME"
+						rm "/mmc/mmca1/$archypath"
+						rm "/mmc/mmca1/$archypath.gz"
+						showNotify "zArchyMan" "start compress to tar" 1 1
+						busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+						showNotify "zArchyMan" "start compress to tar.gz. Wait please." 1 2
+						gzip "/mmc/mmca1/$archypath" "$archypath"
+						showQ "Success" "$IFILENAME.tar.gz сохранен на карте памяти!" 2
+						break
+					;;
+					*)
+					;;
+					esac
+			fi
+	fi
+elif [ $RADIORES -eq 1 ]
+then
+	cd ../
+	exec "$0"
+else
+	let n=$RADIORES-2
+	CD=`ls -a | sed -e "/^\.$/d" | sed -e "/^\..$/d" | sed -n $n\p`
+	if [ -d "$CD" ]
+	then
+		cd "$CD"
+		exec "$0"
+	else
+		export IDIRNAME=`pwd`
+		export IFILENAME="$CD"
+		showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz"
+			ret=$?
+			[ $ret -eq 0 ] && exit
+
+			case $ret in
+			1)					
+					showNotify "zArchyMan" "start operation" 1 1
+					archypath="$IFILENAME.tar"
+					cd "$IDIRNAME"
+					rm "/mmc/mmca1/$archypath"
+					showNotify "zArchyMan" "start compress to tar" 1 1
+					busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+					showQ "Success" "$IFILENAME.tar сохранен на карте памяти!" 2
+					break
+				;;
+			2)
+					showNotify "zArchyMan" "start operation" 1 1
+					archypath="$IFILENAME.tar"
+					cd "$IDIRNAME"
+					rm "/mmc/mmca1/$archypath"
+					rm "/mmc/mmca1/$archypath.gz"
+					showNotify "zArchyMan" "start compress to tar" 1 1
+					busybox tar cvf "/mmc/mmca1/$archypath" "$IFILENAME"
+					showNotify "zArchyMan" "start compress to tar.gz. Wait please." 1 2
+					gzip "/mmc/mmca1/$archypath" "$archypath"
+					showQ "Success" "$IFILENAME.tar.gz сохранен на карте памяти!" 2
+					break
+				;;
+			*)
+				;;
+			esac
+	fi
+fi
+
+
+
+
