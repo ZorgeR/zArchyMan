@@ -1,16 +1,19 @@
 #!/bin/sh
 
+# zArchyMan by Zorge.R
+# motofan.ru - 2010
+# don't modify code.
 # to tar without compression
 
 	TEXTNAME=`showTextEntry Compression "Enter name of folder to compress (on Memory Card)"`
 	if [ $? != 0 ] && [ "$TEXTNAME" != "" ] 
 	then
 		showNotify "zArchyMan" "start operation" 1 1
-		path=$TEXTNAME.tar
+		path="$TEXTNAME.tar"
 		cd /mmc/mmca1/
-		rm $path
+		rm "$path"
 		showNotify "zArchyMan" "start compress to tar" 1 1
-		busybox tar cvf $path $TEXTNAME
+		busybox tar cvf "$path" "$TEXTNAME"
 		showQ "Success" "$TEXTNAME.tar сохранен на карте памяти!" 2
 		break
  	fi

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # zArchyMan by Zorge.R
-# motofan.ru - 2009
+# motofan.ru - 2010
 # don't modify code.
 
 mypath=${0%/*}
