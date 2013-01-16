@@ -3,18 +3,17 @@
 # zArchyMan by Zorge.R
 # motofan.ru - 2010
 # don't modify code.
-# to tar without compression
+# to tar.gz with compression
 
 	TEXTNAME=`showTextEntry Compression "Enter name of folder or file to compress (on Memory Card)"`
 	if [ $? != 0 ] && [ "$TEXTNAME" != "" ] 
 	then
 		showNotify "zArchyMan" "start operation" 1 1
-		path="$TEXTNAME.tar"
-		cd /mmc/mmca1/
-		rm "$path"
-		showNotify "zArchyMan" "start compress to tar" 1 1
-		busybox tar cvf "$path" "$TEXTNAME"
-		showQ "Success" "$TEXTNAME.tar сохранен на карте памяти!" 2
+		path="$TEXTNAME.7z"
+		rm "/mmc/mmca1/$path"
+		showNotify "zArchyMan" "start compress to 7z" 1 1
+		/usr/local/p7zip/7z a "/mmc/mmca1/$path" "/mmc/mmca1/$TEXTNAME"
+		showQ "Success" "$TEXTNAME.7z сохранен на карте памяти!" 2
 		break
  	fi
 

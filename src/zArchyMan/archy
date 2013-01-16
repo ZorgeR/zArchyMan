@@ -6,7 +6,7 @@
 
 mypath=${0%/*}
 
-showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz"
+showRadio "zArchyMan" "select type of archive" " > tar" " > tar.gz" " > 7z"
 ret=$?
 [ $ret -eq 0 ] && exit
 
@@ -16,6 +16,9 @@ case $ret in
 		;;
 	2)
 		$mypath/targzpacker
+		;;
+	3)
+		$mypath/lzma
 		;;
 	*)
 		;;

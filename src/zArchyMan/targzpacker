@@ -5,7 +5,7 @@
 # don't modify code.
 # to tar.gz with compression
 
-	TEXTNAME=`showTextEntry Compression "Enter name of folder to compress (on Memory Card)"`
+	TEXTNAME=`showTextEntry Compression "Enter name of folder or file to compress (on Memory Card)"`
 	if [ $? != 0 ] && [ "$TEXTNAME" != "" ] 
 	then
 		showNotify "zArchyMan" "start operation" 1 1
